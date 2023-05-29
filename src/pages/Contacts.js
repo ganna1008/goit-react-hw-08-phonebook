@@ -6,6 +6,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { useEffect } from 'react';
 import { PropagateLoader } from 'react-spinners';
+import { Box, Paper, Typography } from '@mui/material';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -17,33 +18,70 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
+    <>
+      <Paper
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '15px 15px',
+        }}
+      >
+        <Box>
+          <Typography
+            component="h1"
+            variant="h5"
+            color="#a0a8ba"
+            sx={{ fontWeight: '700', mb: '10px' }}
+          >
+            Phonebook
+          </Typography>
 
-      <div style={{ margin: '15px 0' }}>
-        <PropagateLoader
-          loading={isLoading}
-          color="#36d7b7"
-          cssOverride={{
-            display: 'flex',
-            marginLeft: '150px',
-            alignItems: 'center',
-          }}
-          size={25}
-          aria-label="Loading Spinner"
-        />
-      </div>
+          <ContactForm />
+        </Box>
+      </Paper>
 
-      {error && (
-        <p style={{ color: 'red', fontWeight: 700, marginLeft: '40px' }}>
-          {error}
-        </p>
-      )}
-      <ContactList />
-    </div>
+      <Paper
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '15px 15px',
+        }}
+      >
+        <Box>
+          <Typography
+            component="h2"
+            variant="h5"
+            color="#a0a8ba"
+            sx={{ fontWeight: '700', mb: '10px' }}
+          >
+            Contacts
+          </Typography>
+
+          <Filter />
+
+          <div style={{ margin: '15px 0' }}>
+            <PropagateLoader
+              loading={isLoading}
+              color="#36d7b7"
+              cssOverride={{
+                display: 'flex',
+                marginLeft: '150px',
+                alignItems: 'center',
+              }}
+              size={25}
+              aria-label="Loading Spinner"
+            />
+          </div>
+
+          {error && (
+            <p style={{ color: 'red', fontWeight: 700, marginLeft: '40px' }}>
+              {error}
+            </p>
+          )}
+          <ContactList />
+        </Box>
+      </Paper>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 
-import { Form, Label } from './RegisterForm.styled';
+// import { Form, Label } from './RegisterForm.styled';
 import { register } from 'redux/auth/operations';
+import { Paper, TextField, Button, Stack } from '@mui/material';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -15,26 +16,56 @@ export const RegisterForm = () => {
       password: form.password.value,
     };
 
-    console.log('data', inputData);
     dispatch(register(inputData));
     form.reset();
   };
 
   return (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-      <Label>
-        Username
-        <input type="text" name="name" />
-      </Label>
-      <Label>
-        Email
-        <input type="email" name="email" />
-      </Label>
-      <Label>
-        Password
-        <input type="password" name="password" />
-      </Label>
-      <button type="submit">Register</button>
-    </Form>
+    <Paper
+      elevation={3}
+      sx={{
+        maxWidth: '500px',
+        mt: '20px',
+        padding: '50px 15px',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <Stack
+        onSubmit={handleSubmit}
+        component="form"
+        sx={{
+          width: '350px',
+        }}
+        spacing={2}
+        autoComplete="off"
+      >
+        <TextField
+          required
+          id="outlined-required"
+          label="Username"
+          type="text"
+          name="name"
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Email"
+          name="email"
+          type="email"
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Password"
+          type="password"
+          name="password"
+        />
+
+        <Button variant="outlined" type="submit" sx={{ height: '50px' }}>
+          Register
+        </Button>
+      </Stack>
+    </Paper>
   );
 };

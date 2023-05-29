@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import { ContactItem, ContactItemButton } from './ContactListItem.style';
+import { ContactItem } from './ContactListItem.style';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
+import { IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactListItem = ({ contact: { name, number, id } }) => {
   const dispatch = useDispatch();
@@ -11,9 +13,10 @@ export const ContactListItem = ({ contact: { name, number, id } }) => {
       <p>
         {name}: {number}
       </p>
-      <ContactItemButton type="button" onClick={onDeleteContact}>
-        Delete
-      </ContactItemButton>
+
+      <IconButton aria-label="delete" onClick={onDeleteContact}>
+        <DeleteIcon />
+      </IconButton>
     </ContactItem>
   );
 };

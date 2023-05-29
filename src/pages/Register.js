@@ -1,14 +1,15 @@
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 import { Helmet } from 'react-helmet';
+import { Box } from '@mui/material';
 
 const Register = () => {
   return (
-    <div>
+    <Box sx={{ marginLeft: '40px', display: 'inline-block' }}>
       <Helmet>
         <title>Registration</title>
       </Helmet>
       <RegisterForm />
-    </div>
+    </Box>
   );
 };
 

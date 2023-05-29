@@ -1,13 +1,15 @@
 import { Helmet } from 'react-helmet';
 import { LoginForm } from 'components/LoginForm/LoginForm';
+import { Box } from '@mui/material';
+
 const Login = () => {
   return (
-    <div>
+    <Box sx={{ marginLeft: '40px', display: 'inline-block' }}>
       <Helmet>
         <title>Login</title>
       </Helmet>
       <LoginForm />
-    </div>
+    </Box>
   );
 };
 
